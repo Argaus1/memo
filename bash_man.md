@@ -442,31 +442,27 @@ d'ignorer sigkill)
 
 20.SIGTSTP: ctrl+Z
 
-bash ignore sigterm si en interactif
-sigint gere
-ignore sigquit, sigttin, sigttou, sigtstp si job control in effect
-
-les signal handler de bash ont des valeurs herites du parent.
-si job ctrl pas la, cmd asynchrone ignorent sigint et sigquit
-pr cmd substitution : ces commandes ignorent les sig generes par le clavier et job ctrl : ttin, ttou
-et tstp
-
-si sighup le shell exit apres avoir envoyer sighub a tous les jobs en cours. lesjobs en pause recoivent aussi sigcont
+- bash ignore sigterm si en interactif
+- sigint gere
+- ignore sigquit, sigttin, sigttou, sigtstp si job control in effect
+- les signal handler de bash ont des valeurs herites du parent.
+- si job ctrl pas la, cmd asynchrone ignorent sigint et sigquit
+- pr cmd substitution : ces commandes ignorent les sig generes par le clavier et job ctrl : ttin, ttou et tstp
+- si sighup le shell exit apres avoir envoyer sighub a tous les jobs en cours. lesjobs en pause recoivent aussi sigcont
 
 
 ## JOB CONTROL
 
-capacite a stopper execution puis la continuer
-chaque pipeline = un job
-si job asynchrone  [1] 25647 (PID = dernier process associe a ce job)
-
+- capacite a stopper execution puis la continuer
+- chaque pipeline = un job
+- si job asynchrone  [1] 25647 (PID = dernier process associe a ce job)
 
 ## PROMPT
 
-bash display plusieurs prompts
-PS1: celui quand est pret pour une cmd
-PS2: quand veut d'autre input (typiquement un chevron)
-PS0:apres avoir lu command et avant de l'executer
+bash display plusieurs prompts:
+- PS1: celui quand est pret pour une cmd
+- PS2: quand veut d'autre input (typiquement un chevron)
+- PS0:apres avoir lu command et avant de l'executer
 
 
 ## READLINE
@@ -485,8 +481,7 @@ bcp de listes d'infos potentiellement importants mais absurdes a noter: line 271
 
 ## HISTORY
 
-initialise a partir de la variable HISTFILE(~/.bash_history). on tronque le fichier nomme d'apres la 
-valeur de histfile pour qu'il ne contienne pas plus que le nbr de lignes demande par histfilesize
+Initialise a partir de la variable HISTFILE(~/.bash_history). On tronque le fichier nomme d'apres la valeur de histfile pour qu'il ne contienne pas plus que le nbr de lignes demande par histfilesize.
 
 
 ## HISTORY EXPANSION
