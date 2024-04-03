@@ -1,0 +1,2 @@
+# memo
+various useful resources
