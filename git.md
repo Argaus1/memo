@@ -103,5 +103,58 @@ git reset <no commit> --hard
 ne remet nulle part, modif supprimees.
 ```bash
 git checkout <commit ou branche>
+git checkout <main>
 ```
 Nous ramene a un commit : **deplace la HEAD**. Mais nous sommes dans l'historique!
+
+**autres commandes**
+
+voir qui a fait quelle modif
+```bash
+git blame <file>
+```
+voir differences
+```bash
+git diff [<no commit> [<no commit>]]
+```
+donner nom a un commit
+```bash
+git checkout <no commit>
+git tag <nom>
+git checkout <nom>
+git tag -d <nom>
+```
+Quand on s'est perdue:
+```bash
+git reflog
+```
+
+## BRANCHES
+
+```bash
+git branch
+git branch <name>
+git checkout <name>
+```
+
+Branches sont utiles pour tester du code. Une fois teste, soit on merge, soit on supprime la branche.
+
+**merging**
+```bash
+git merge <name>
+```
+/!\ Si code modifie dans main, on va avoir un conflit.
+![conflit](https://www.nicelydev.com/img/git/fusion-branches.png)
+Le conflit a eu lieu a cause du commit fc41856.
+
+**supprimer une branche**
+```bash
+git branch -d <branche>
+```
+
+**creer une branche et la deplacer vers un commit**
+```bash
+git branch --force <branche> <no commit>
+```
+![deplacement](https://www.nicelydev.com/img/git/deplacer-branche-test.png)
+Quand la branche a ete cree elle etait sur commit ef2a68d, mtn elle a ete deplacee.
