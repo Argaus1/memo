@@ -3,18 +3,18 @@
 
 ## DEFINITIONS
 
-blank: tab ou space
-word/token: sequence de caracteres consideree comme une unite singuliere
-identifier/name: word/token commencant par underscor ou car alpha et avec seulement caracteres 
-alphanumeriques
-metacharacters: caractere qui separe des mots, SAUF QUAND QUOTED (|  & ; ( ) < > space tab newline)
-control operator: token qui fait operation de controle (|| & && ; ;; ;& ;;& ( ) | |& <nl>)
+* blank: tab ou space
+* word/token: sequence de caracteres consideree comme une unite singuliere
+* identifier/name: word/token commencant par underscor ou car alpha et avec seulement caracteres 
+* alphanumeriques
+* metacharacters: caractere qui separe des mots, SAUF QUAND QUOTED (|  & ; ( ) < > space tab newline)
+* control operator: token qui fait operation de controle (|| & && ; ;; ;& ;;& ( ) | |& <nl>)
 
-certains mots sont des reserved words: signification speciale pour bash
-- si unquoted
-- soit premier word/arg0/cmd to perform
-- soit troisieme mot de cmd case OU select (in)
-- soit troisieme mot de cmd for (in/do)
+* certains mots sont des reserved words: signification speciale pour bash
+	- si unquoted
+	- soit premier word/arg0/cmd to perform
+	- soit troisieme mot de cmd case OU select (in)
+	- soit troisieme mot de cmd for (in/do)
 (! case  coproc  do done elif else esac fi for function if in select then until while { } time [[ ]])
 
 
@@ -22,7 +22,7 @@ certains mots sont des reserved words: signification speciale pour bash
 
 ### commande simple
 
-Qu'est ce qu'une commande ?
+*Qu'est ce qu'une commande ?*
 - assignations de variables
 - words/tokens (sequence de caracteres consideree comme une unite singuliere) separes par blank 
 (tab ou space) (peuvent etre des redirections) - 1er mot = arg0 = commande a executer, mots suivants 
@@ -32,7 +32,7 @@ Qu'est ce qu'une commande ?
 
 ### pipeline
 
-Qu'est ce qu'une pipeline ?
+*Qu'est ce qu'une pipeline ?*
 - sequence de une ou plusieurs commandes separees entre elles par des operateurs de controle | OU |&
 - | :stdout de cmd1 connecte grace a une pipe a stdin de cmd2 - connexion arrive AVANT toute 		
 redirection
@@ -45,11 +45,16 @@ TIMEFORMAT
 - avant arg0: reserved word ! peut faire que exit status = negation de l'exit status classique
 
 chaque cmd = un processus dans un subshell
-si "set -o lastpipe" (shopt builtin): derniere cmd executee dans le shell
+
+si
+```bash
+set -o lastpipe
+```
+exit status = derniere cmd executee dans le shell
 
 ### list
 
-Qu'est ce qu'une liste?
+*Qu'est ce qu'une liste?*
 - sequence de une ou plusieurs pipelines separees par operateurs de controle ; & && || et 
 potentiellement terminees par op ctrl ; & <nl>
 - && || equal precedence -> evaluees avec la meme priorite. sont utilises pour execution
@@ -57,28 +62,42 @@ conditionnelle (basee sur succes ou echec des cmd (exit status)). exit status = 
 - && AND list. cmd2 exec si exit status de precedent == 0
 - || OR list. cmd2 exec si exit status de precedente != 0
 - ; & equal precedence -> meme priorite.
-- ; commandes sequentielles: plusieurs <nl> peuvent remplacer un ; shell att fin de cmd
+- ; commandes sequentielles: plusieurs \<nl\> peuvent remplacer un ; shell att fin de cmd
 exit status = celui de la derniere cmd.
 - & commandes asynchrones: si control oprtr & termine: cmd exec dans un subshell. shell n'att pas fin de cmd, exit status = 0.
 
 ### compound commands
 
-Qu'est ce qu'une commande composee?
+*Qu'est ce qu'une commande composee?*
 - sequence de plusieurs commandes groupees --> traitees comme une unite singuliere. shell scripts
 - ATTENTION : ce qui suit n'est pas du tout demande par minishell
 
 - (list): subshell, exit = celui de la list. permet de ne pas affecter son shell avec des unset par ex
-- { list;/<nl> }: 0 interet apparemment. mm shell, exit stauts = celui de la list. = "group command"
+- { list;/\<nl\> }: 0 interet apparemment. mm shell, exit status = celui de la list. = "group command"
 - ((expr)): expression arithmetique. 0 si != 0, 1 si 0. correspond a let "expr"
 - [[ expr ]]: exit 1 ou 0 selon eval de l'expr (..)
-- reserved words comme for [ [ in [ token ... ] ] ; ] do list ; done - for (( expr1 ; expr2 ; 
-expr3 )) ; do list ; done - select name [ in word ] ; do list ; done - if list; then list; [ elif 
-list; then list; ] ... [ else list; ] fi - while list-1; do list-2; done
+- reserved words exemples :
+```bash
+for [ [ in [ token ... ] ] ; ] do list ; done
+```
+```bash
+for (( expr1 ; expr2 ; expr3 )) ; do list ; done
+```
+```bash
+select name [ in word ] ; do list ; done
+```
+```bash
+if list; then list; [ elif list; then list; ] ... [ else list; ] fi
+```bash
+while list-1; do list-2; done
+```
 
 ### coprocesses
 
-Qu'est ce qu'un coprocessus?
-- coproc [NAME] command [redirections]
+*Qu'est ce qu'un coprocessus?*
+```bash
+coproc [NAME] command [redirections]
+```
 - commande precedee par le reserved word coproc. exec est asynchrone dans un subshell
 - si commande simple pas besoin de NAME
 - shell cree un tableau NAME. stdout de cmd connecte a un fd = NAME[0]. stdin = NAME[1]. pipe etablie
@@ -88,12 +107,16 @@ avant toute redirection
 
 - nom des fct ne peut pas contenir $
 - execute une commande composee definie par l'utilisateur
-- fname () compound-command [redirection]
-- function fname [()] compound-command [redirection]
+```bash
+fname () compound-command [redirection]
+```
+```bash
+function fname [()] compound-command [redirection]
+```
 
 
 ## COMMENTS
-'#'
+\#
 
 
 ## QUOTING
@@ -108,9 +131,9 @@ ligne et plus un control operator)
 - '' = preservation de la valeur litterale de TOUS les char dans les quotes. JAMAIS de '' entre des ''
 meme avec \
 - "" = preservation de la valeur litterale de tous SAUF $ ' \ et ! si history expansion enabled
-\ garde son special meaning si suivi par $ ' " \ <nl>
+\ garde son special meaning si suivi par $ ' " \ \<nl\>
 "" peut aller dans "" si \"
-* et @ ont special meaning entre ""
+\* et @ ont special meaning entre ""
 - $'str' : expansion a str avec \ANSIC comme \n ou \t respectees. ex: echo $'anouk\tanouk\nanouk'
 donne: anouk	anouk
 anouk
@@ -128,18 +151,23 @@ splitting
 
 ### positional parameters
 
-- set -- 10 20 30 puis anouk=$2 puis echo $anouk : 20
+```bash
+set -- 10 20 30
+anouk=$2
+echo $anouk
+```
+normalement sort 20
 
 ### special parameters
 
-$* liste des pos parameters
-"$@" liste avec pleins de ""strs separes ("$*" = un str)
-$# nbr de pos param
-$? seul pr minishell
-$- flags
-$$ PID du shell
-$! PID du most recent job (avec coproc)
-$0 nom du shell
+- $\* liste des pos parameters
+- "$@" liste avec pleins de ""strs separes ("$\*" = un str)
+- $# nbr de pos param
+- $? seul pr minishell
+- $- flags
+- $$ PID du shell
+- $! PID du most recent job (avec coproc)
+- $0 nom du shell
 
 ### shell variables
 
@@ -155,7 +183,11 @@ pas compris
 
 ### 1brace expansion
 
-- avant toute autre expansion. ex. a{d,c,b}e -> `ade  ace abe'
+avant toute autre expansion. 
+```bash
+a{d,c,b}e
+```
+`ade  ace abe'
 
 ### 2tilde expansion
 
@@ -190,7 +222,7 @@ pr connaitre l'output de la list
 ### pathname expansion
 
 - effectue apres word splitting
-- * ? pattern matching - wildcards
+- \* ? pattern matching - wildcards
 - pas besoin pr partie mandatory
 
 
@@ -206,7 +238,11 @@ une commande
 - si il n'y a pas de fd, on prend fd0 si < ou fd1 si >
 - var/filename est sujet a brace expansion, tilde expansion, parameter/variable expansion, command 
 substitution, arithmetic expansion, quote removal, pathname expansion, word splitting
-- ex. ls 2>&1 > dirlist -> stderr devient une duplication de stdout, PUIS stdout (pas de fd spe avant 
+- ex. 
+```bash
+ls 2>&1 > dirlist
+```
+-> stderr devient une duplication de stdout, PUIS stdout (pas de fd spe avant 
 chevron) est redirigee vers dirlist
 - fd de bash : /dev/fd/fd, /dev/stdin, /dev/stdout, /dev/stderr, /dev/tcp/host/port (si host est valid
 hostname/addr internet & port = port nb -> bash ouvre le TCP socket correspondant), /dev/udp/host/port
@@ -221,7 +257,9 @@ hostname/addr internet & port = port nb -> bash ouvre le TCP socket correspondan
 
 ### here documents
 
-- [n]<<[-]word
+```bash
+[n]<<[-]word
+```
 - pas d'expansion
 - si rien dans n ok, on prend fd0, mais on peut aussi aller chercher un delimiter dans un autre fd
 - si une partie de word est quoted, le delimiter devient le res de quote removal, et le contenu
@@ -233,7 +271,9 @@ arithmetic expansion
 
 ### here strings
 
-- [n]<<<word
+```bash
+[n]<<<word
+```
 - tilde expansion, parameter and variable expansion, command substitution, arithmetic expansion, 
 and quote removal
 - pas de pathname exp ni word splitting
@@ -256,17 +296,17 @@ a la fonction actuelle
 
 ## SIMPLE COMMAND EXPANSION
 
-IMPORTANT POUR MINISHELL
+**IMPORTANT POUR MINISHELL**
 
 Lors de l'execution d'une simple commande, shell fait ces expansions, assignements et redirections
 dans l'ordre qui suit, de gauche a droite :
-1- le parser a marque certains words/tokens comme des assignements de variables (quand precedent
+1. le parser a marque certains words/tokens comme des assignements de variables (quand precedent
 le nom de la commande) ou des redirectiosn. CES TOKENS SONT SAUVEGARDES POUR LA SUITE
-2- les tokens qui n'ont pas ete ainsi sauvegardes par le parser comme des assignements ou des redir
+2. les tokens qui n'ont pas ete ainsi sauvegardes par le parser comme des assignements ou des redir
 sont EXPANDED si possible. si il y a des restes : 1er token = nom de la cmd, et le reste sont ses 
 arguments
-3- on fait les redirections
-4- assignements de variable : on expand (tilde, param, cmd, arithm, quote removal) et on assigne
+3. on fait les redirections
+4. assignements de variable : on expand (tilde, param, cmd, arithm, quote removal) et on assigne
 ensuite :
 - si pas de cmd name : assignements de variables affectent l'environnement du shell
 - si cmd name : assignement affectent cmd et pas shell
@@ -295,7 +335,8 @@ arguments
 
 ## COMMAND EXECUTION ENVIRONMENT
 
-environnement d'execution du shell =
+environnement d'execution du shell:
+
 - fichiers ouverts herites par le shell qd invoque (potentiellement modifies si redir fournies a exec
 quand shell a ete invoque)
 - current working dir (cd) --> a modifier pour minishell ?? lui faire heriter du reste de l'arbre
@@ -317,22 +358,23 @@ principal
 
 ## ENVIRONMENT
 
-IMPORTANT POUR PARSING MINISHELL
+**IMPORTANT POUR PARSING MINISHELL**
 
-qd program est invoque on lui donne un tableau de str
-paire name-value sous la forme name=value
-quand shell est invoque, il scan l'environnement et cree un parametre pour chque name qu'il trouve,
-le marquant automatiquement pour être exporté vers les processus enfants.
-les cmd exec heritent de l'env
-export permet de add et supp des variables de l'environnement
-unset supprime
+- qd program est invoque on lui donne un tableau de str
+- paire name-value sous la forme name=value
+- quand shell est invoque, il scanne l'environnement et cree un parametre pour chque 
+name qu'il trouve, le marquant automatiquement pour être exporté vers les 
+processus enfants.
+- les cmd exec heritent de l'env
+- export permet de add et supp des variables de l'environnement
+- unset supprime
 
 
 ## EXIT STATUS
 
-IMPORTANT POUR MINISHELL
+**IMPORTANT POUR MINISHELL**
 
-Qu'est ce que l'exit status?
+*Qu'est ce que l'exit status?*
 La valeur retournee par le waitpid. Entre 0 et 255. Certaines valeurs expliques certains echecs.
 0 = succes
 autre = echec
