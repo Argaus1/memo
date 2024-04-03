@@ -206,7 +206,7 @@ a{d,c,b}e
 - sortie d'une commande remplace le nom de la commande
 - $(cmd) OU 'cmd'
 - cmd exec dans un subshell
-- $(cat file) = $(< file)
+- \$(cat file) = \$(< file)
 - si "$(cmd)"-> If the substitution appears within double quotes, word splitting and pathname 
 expansion are not performed on the results.
 
@@ -232,7 +232,7 @@ pr connaitre l'output de la list
 - pas besoin pr partie mandatory
 
 
-## REDIRECTION<<<<<
+## REDIRECTION
 
 
 - redirection de input et output d'une commande : duplication, ouverture, fermeture
@@ -244,11 +244,11 @@ une commande
 - si il n'y a pas de fd, on prend fd0 si < ou fd1 si >
 - var/filename est sujet a brace expansion, tilde expansion, parameter/variable expansion, command 
 substitution, arithmetic expansion, quote removal, pathname expansion, word splitting
-- ex. 
+- exemple
 ```bash
 ls 2>&1 > dirlist
 ```
--> stderr devient une duplication de stdout, PUIS stdout (pas de fd spe avant 
+stderr devient une duplication de stdout, PUIS stdout (pas de fd spe avant 
 chevron) est redirigee vers dirlist
 - fd de bash : /dev/fd/fd, /dev/stdin, /dev/stdout, /dev/stderr, /dev/tcp/host/port (si host est valid
 hostname/addr internet & port = port nb -> bash ouvre le TCP socket correspondant), /dev/udp/host/port
@@ -258,7 +258,7 @@ hostname/addr internet & port = port nb -> bash ouvre le TCP socket correspondan
 - output > si file existe pas, cree, pareil pour >>
 - &>word redirige aussi stderr
 - <& dup
-- >- move
+- \>- move
 - <> les deux
 
 ### here documents
@@ -381,8 +381,11 @@ processus enfants.
 **IMPORTANT POUR MINISHELL**
 
 *Qu'est ce que l'exit status?*
-La valeur retournee par le waitpid. Entre 0 et 255. Certaines valeurs expliques certains echecs.
+La valeur retournee par le waitpid. Entre 0 et 255. Certaines valeurs expliquent 
+certains echecs.
+
 0 = succes
+
 autre = echec
 si cmd termine avec fatal signal n, exit status - 128 + n
 si cmd echoue a cause d'une erreur pdt expansion ou redir -> exit status > 0
@@ -399,24 +402,44 @@ sauf erreur syntax -> non zero exit
 IMPORTANT POUR MINISHELL
 
 on doit avoir un signal handler. cmt le prgrm minishell en lui meme gere les signaux ?
+
 1.SIGHUP: suspension. qd on veut au'un process reload sa config
+
 2.SIGINT: signal d'interruption. trl+c
+
 3.SIGQUIT: ctrl+RIEN. process termine+core dump
+
 4.SIGILL: instruction illegale
+
 6.SIGABRT: erreur detectee
+
 8.SIGFPE: floating point exception. operation arithmetique illegale. overflow, /0...
-9.SIGKILL: killm forcer terminer (et pas interrompre), qd ne rep pas aux autres signaux d'arret
+
+9.SIGKILL: killm forcer terminer (et pas interrompre), qd ne rep pas aux autres signaux
+d'arret
+
 10.SIGUSR1 
+
 11.SIGSEV
+
 12.SIGUSR2: user defined, pour comportement custom
+
 13.SIGPIPE: broken pipe, ecrire dans une pipe quand son reader a terminated
+
 14.SIGALRM: quand un timer set par alarm() expire
-15.SIGTERM:termination signal. process peut ignorer ou prendre en compte(impossible d'ignorer sigkill)
+
+15.SIGTERM:termination signal. process peut ignorer ou prendre en compte(impossible 
+d'ignorer sigkill)
+
 18.SIGCONT: resume execution
+
 19.SIGSTOP
-21.SIGTTIN: envoye a background process qui veut lire depuis son terminl "controlant" (qui doit etre 
-le seul a utiliser son input)
+
+21.SIGTTIN: envoye a background process qui veut lire depuis son terminl "controlant" 
+(quadoit etre le seul a utiliser son input)
+
 22.SIGTTOU: mm chose si background veut ecrire dans terminal controlant
+
 20.SIGTSTP: ctrl+Z
 
 bash ignore sigterm si en interactif
