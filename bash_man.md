@@ -520,7 +520,7 @@ on exec cmd avec ces args.
 man env
 man readline
 
-##FILES
+## FILES
 
 /bin/bash: The bash executable
 /etc/profile: The systemwide initialization file, executed for login shells
