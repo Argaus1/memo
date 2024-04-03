@@ -134,9 +134,15 @@ meme avec \
 \ garde son special meaning si suivi par $ ' " \ \<nl\>
 "" peut aller dans "" si \"
 \* et @ ont special meaning entre ""
-- $'str' : expansion a str avec \ANSIC comme \n ou \t respectees. ex: echo $'anouk\tanouk\nanouk'
-donne: anouk	anouk
+- \$'str' : expansion a str avec \\ANSIC comme \\n ou \\t respectees.
+```bash
+echo $'anouk\tanouk\nanouk'
+```
+donne
+```bash
+anouk	anouk
 anouk
+```
 - $"str" : pas d'exp ANSI C. traduction en acc avec current locale
 
 
