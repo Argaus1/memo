@@ -399,7 +399,7 @@ sauf erreur syntax -> non zero exit
 
 ## SIGNALS
 
-IMPORTANT POUR MINISHELL
+**IMPORTANT POUR MINISHELL**
 
 on doit avoir un signal handler. cmt le prgrm minishell en lui meme gere les signaux ?
 
