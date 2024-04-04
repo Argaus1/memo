@@ -5,8 +5,7 @@
 
 * blank: tab ou space
 * word/token: sequence de caracteres consideree comme une unite singuliere
-* identifier/name: word/token commencant par underscor ou car alpha et avec seulement caracteres 
-* alphanumeriques
+* identifier/name: word/token commencant par underscor ou car alpha et avec seulement caracteres alphanumeriques
 * metacharacters: caractere qui separe des mots, SAUF QUAND QUOTED (|  & ; ( ) < > space tab newline)
 * control operator: token qui fait operation de controle (|| & && ; ;; ;& ;;& ( ) | |& <nl>)
 
