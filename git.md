@@ -139,12 +139,18 @@ git checkout <name>
 
 Branches sont utiles pour tester du code. Une fois teste, soit on merge, soit on supprime la branche.
 
+Creer une branch et s'y deplacer:
+```bash
+git branch -b <name>
+```
+
 **merging**
 ```bash
 git merge <name>
 ```
 /!\ Si code modifie dans main, on va avoir un conflit.
 ![conflit](https://www.nicelydev.com/img/git/fusion-branches.png)
+
 Le conflit a eu lieu a cause du commit fc41856.
 
 **supprimer une branche**
@@ -157,4 +163,5 @@ git branch -d <branche>
 git branch --force <branche> <no commit>
 ```
 ![deplacement](https://www.nicelydev.com/img/git/deplacer-branche-test.png)
+
 Quand la branche a ete cree elle etait sur commit ef2a68d, mtn elle a ete deplacee.
