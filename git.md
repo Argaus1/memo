@@ -238,7 +238,7 @@ Je suis un membre du groupe (createur ou autre), j'ai fait mes changements sur l
 
 **je clone la version la plus recente** (meme si je suis le createur)
 ```bash
-git pull upstream main/master
+git pull <branch name> master
 ```
 
 Pour tout le monde ensuite:
