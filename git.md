@@ -13,7 +13,7 @@
 
 [Branches](https://github.com/AnoukBV/memo/blob/main/git.md#branches)
 
-- [Bases]
+- [Bases](https://github.com/AnoukBV/memo/blob/main/git.md#bases)
 - [Remote](https://github.com/AnoukBV/memo/blob/main/git.md#remote)
 
 --------------------------------------------------------------------
