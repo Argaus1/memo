@@ -13,6 +13,10 @@
 
 [Branches](https://github.com/AnoukBV/memo/blob/main/git.md#branches)
 
+  [Bases]
+
+  [Remote]
+
 --------------------------------------------------------------------
 ## Notions de base
 
