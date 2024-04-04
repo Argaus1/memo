@@ -147,6 +147,8 @@ git revert <no commit>
 
 ## BRANCHES
 
+### BASES
+
 ```bash
 git branch
 git branch <name>
