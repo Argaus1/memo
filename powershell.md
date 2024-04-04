@@ -8,3 +8,7 @@ Rm
 ```powershell
 Remove-Item
 ```
+mkdir
+```powershell
+New-Item -ItemType Directory <-Path> <nameofthepath>
+```
