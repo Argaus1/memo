@@ -8,6 +8,7 @@
 ## Sommaire
 
 [Notions de base](https://github.com/AnoukBV/memo/blob/main/git.md#notions-de-base)
+[Branches](https://github.com/AnoukBV/memo/blob/main/git.md#branches)
 
 --------------------------------------------------------------------
 ## Notions de base
