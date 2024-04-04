@@ -2,6 +2,8 @@
 
 ## LIENS
 
+[Building a mini bash: A 42 project](https://m4nnb3ll.medium.com/minishell-building-a-mini-bash-a-42-project-b55a10598218)
+
 -------------------------------------------------
 ## SOMMAIRE
 
