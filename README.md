@@ -6,3 +6,5 @@ various useful resources
 [man bash memo](https://github.com/AnoukBV/memo/blob/main/bash_man.md)
 
 [git tutorial](https://github.com/AnoukBV/memo/blob/main/git.md)
+
+[Valgrind memo](https://github.com/AnoukBV/memo/blob/main/valgrind.md)
