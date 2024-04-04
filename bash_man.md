@@ -125,7 +125,7 @@ ou encore parameter expansion
 ou ! est a quote pr empecher history expansion
 " ' \ permettent de quote, mais les comportements different
 
-- \ = esc character. preserve la valeur litterale du char qui suit SAUF <nl> (c une continuation de
+- \ = esc character. preserve la valeur litterale du char qui suit SAUF \<nl\> (c une continuation de
 ligne et plus un control operator)
 - '' = preservation de la valeur litterale de TOUS les char dans les quotes. JAMAIS de '' entre des ''
 meme avec \
