@@ -7,7 +7,7 @@
 --------------------------------------------------------------------
 ## Sommaire
 
-[Notions de base](
+[Notions de base](https://github.com/AnoukBV/memo/blob/main/git.md#notions-de-base)
 
 --------------------------------------------------------------------
 ## Notions de base
