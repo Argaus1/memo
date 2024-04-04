@@ -6,6 +6,8 @@
 
 [*Using Git and Github on Group Projects*](https://medium.com/@androidmatheny/using-git-and-github-on-group-projects-d636be2cdd4d)
 
+[*Getting started with Git*](https://docs.github.com/en/get-started/getting-started-with-git)
+
 --------------------------------------------------------------------
 ## Sommaire
 
