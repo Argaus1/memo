@@ -1,11 +1,15 @@
 # GIT TUTORIAL
 
-## Links
+## Liens
 
 [*Qu'est ce que git?*](https://www.nicelydev.com/git/definition-git)
 
 --------------------------------------------------------------------
+## Sommaire
 
+[Notions de base](
+
+--------------------------------------------------------------------
 ## Notions de base
 
 HEAD = endroit ou nous nous trouvons.
