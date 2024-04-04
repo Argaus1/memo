@@ -13,3 +13,7 @@ mkdir
 ```powershell
 New-Item -ItemType Directory <-Path> <nameofthepath>
 ```
+mv
+```powershell
+Move-Item -Path <SourcePath> -Destination <DestinationPath>
+```
