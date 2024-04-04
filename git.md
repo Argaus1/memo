@@ -190,3 +190,59 @@ Quand la branche a ete cree elle etait sur commit ef2a68d, mtn elle a ete deplac
 git rebase -i <branche>
 git cherry-pick <no commit> <no commit> ...
 ```
+
+## REMOTE
+
+Quand on cree une branche, elle n'est cree que localement. 
+Quand on a plusieurs personnes sur un projet, deux options:
+- tout le monde est collaborateur
+- un createur et plusieurs autres qui ne peuvent pas push sans aval du createur
+
+### One gatekeeper and others group members
+
+![schema group proj](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Vg2W3Aoc7ksZYpXDbMqEyQ.png)
+
+Chaque carre vert est une machine, les carres bleus sont des repositories.
+
+Le createur du projet cree son repo. Ensuite dans son terminal:
+```bash
+git remote add <remote name> <url>
+git push -u <remote name> main
+```
+
+Le membre du groupe va fork sur github. Les membres travaillent sur un repo forked.
+Ils clonent la version du moment du fork.
+```bash
+git remote -v
+```
+Permet d'afficher les repo remote avec lesquels le repo local interagit. fetch = pour recuperer des donnees, push = pour envoyer des donnees.
+
+Ensuite en faisant un git remote add comme d'hab vont se connecter au main project. Cela permet de cloner la version la plus recente pour updater son main local. 
+
+**Chaque membre dispose d'un origin remote connecte a leur fork, et un upstream remote connecte au main project repo.**
+
+**Ne jamais travailler sur la main branch --> si on veut modifier, on cree une nouvelle branche.**
+
+![modifications hierarchie](https://miro.medium.com/v2/resize:fit:720/format:webp/1*J2-6INx5GDg-2JnDFZUOmQ.png)
+
+Je suis un membre du groupe (createur ou autre), j'ai fait mes changements sur la branche aue j'ai cree pour ces changements. Je les commit. 
+
+**je clone la version la plus recente** (meme si je suis le createur)
+```bash
+git pull upstream main/master
+```
+
+Pour tout le monde ensuite:
+
+J'ajoute mes changements sur ma main branche **locale**:
+```bash
+git merge <branch name> //tjrs avec changes committed
+```
+Je gere mes merge conflicts localement.
+
+Je push ma main sur **mon fork** (si je suis membre non createur) = D sur schema.
+```bash
+git push origin main/<branch name>
+```
+
+Je cree une pull request (sur github). Le createur accepte. Je n'ai juste pas a faire de pull request. 
