@@ -7,6 +7,7 @@ Get-Process
 Rm
 ```powershell
 Remove-Item
+Remove-Item -Path <DirectoryPath> -Recurse -Force
 ```
 mkdir
 ```powershell
