@@ -135,6 +135,11 @@ Quand on s'est perdue:
 git reflog
 ```
 
+Creer un nv commit dans la branche, copie d'un ancien commit (pas de notion de retour en arriere etc, pas mal pour travail avec remote et groupe):
+```bash
+git revert <no commit>
+```
+
 ## BRANCHES
 
 ```bash
@@ -144,6 +149,13 @@ git checkout <name>
 ```
 
 Branches sont utiles pour tester du code. Une fois teste, soit on merge, soit on supprime la branche.
+
+Pour circuler:
+```bash
+git checkout <branche>^
+git checkout <branche>^^
+git checkout <branche>~n
+```
 
 Creer une branch et s'y deplacer:
 ```bash
@@ -166,8 +178,15 @@ git branch -d <branche>
 
 **creer une branche et la deplacer vers un commit**
 ```bash
-git branch --force <branche> <no commit>
+git branch --force <branche> <no commit>/<branche>
+git branch -f <branche> <no commit>/<branche>
 ```
 ![deplacement](https://www.nicelydev.com/img/git/deplacer-branche-test.png)
 
 Quand la branche a ete cree elle etait sur commit ef2a68d, mtn elle a ete deplacee.
+
+**selectionner des commits a copier sous la branche**
+```bash
+git rebase -i <branche>
+git cherry-pick <no commit> <no commit> ...
+```
