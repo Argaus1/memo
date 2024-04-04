@@ -41,7 +41,7 @@
 
 [Conditional expressions](https://github.com/AnoukBV/memo/blob/main/bash_man.md#conditional-expressions)
 
-[Simple command expansion](https://github.com/AnoukBV/memo/blob/main/bash_man.md#simple-command-expansion)
+[Simple command expansion](https://github.com/AnoukBV/memo/blob/main/bash_man.md#simple-command-expansion)	//PARSING DE USER INPUT
 
 [Command execution](https://github.com/AnoukBV/memo/blob/main/bash_man.md#command-execution)
 
