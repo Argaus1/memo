@@ -272,7 +272,7 @@ a{d,c,b}e
 - sortie d'une commande remplace le nom de la commande
 - $(cmd) OU 'cmd'
 - cmd exec dans un subshell
-- \$(cat file) = \$(< file)
+- \$\(cat file) = \$\(< file)
 - si "$(cmd)"-> If the substitution appears within double quotes, word splitting and pathname 
 expansion are not performed on the results.
 
