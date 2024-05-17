@@ -1,12 +1,78 @@
-# MINISHELL - MAN BASH
+# BASH
 
+## LIENS
 
+[Building a mini bash: A 42 project](https://m4nnb3ll.medium.com/minishell-building-a-mini-bash-a-42-project-b55a10598218)
+
+-------------------------------------------------
+## SOMMAIRE
+
+[Definitions](https://github.com/AnoukBV/memo/blob/main/bash_man.md#definitions)
+
+[Shell Grammar](https://github.com/AnoukBV/memo/blob/main/bash_man.md#shell-grammar)
+- [Commande simple](https://github.com/AnoukBV/memo/blob/main/bash_man.md#commande-simple)
+- [Pipeline](https://github.com/AnoukBV/memo/blob/main/bash_man.md#pipeline)
+- [List](https://github.com/AnoukBV/memo/blob/main/bash_man.md#list)
+- [Commandes composees](https://github.com/AnoukBV/memo/blob/main/bash_man.md#compound-commands)
+- [coprocesses](https://github.com/AnoukBV/memo/blob/main/bash_man.md#coprocesses)
+- [Shell function definition](https://github.com/AnoukBV/memo/blob/main/bash_man.md#shell-function-definitions)
+
+[Comments](https://github.com/AnoukBV/memo/blob/main/bash_man.md#comments)
+
+[Quoting](https://github.com/AnoukBV/memo/blob/main/bash_man.md#quoting)
+
+[Parametres](https://github.com/AnoukBV/memo/blob/main/bash_man.md#parameters)
+- [Positional parameters](https://github.com/AnoukBV/memo/blob/main/bash_man.md#positional-parameters)
+- [Special parameters](https://github.com/AnoukBV/memo/blob/main/bash_man.md#special-parameters)
+- [Shell variables](https://github.com/AnoukBV/memo/blob/main/bash_man.md#shell-variables)
+- [Arrays](https://github.com/AnoukBV/memo/blob/main/bash_man.md#arrays)
+
+[Expansion](https://github.com/AnoukBV/memo/blob/main/bash_man.md#expansion)
+
+[Redirection](https://github.com/AnoukBV/memo/blob/main/bash_man.md#redirection)
+- [Heredoc](https://github.com/AnoukBV/memo/blob/main/bash_man.md#here-documents)
+- [Herestring](https://github.com/AnoukBV/memo/blob/main/bash_man.md#here-strings)
+
+[Aliases](https://github.com/AnoukBV/memo/blob/main/bash_man.md#aliases)
+
+[Functions](https://github.com/AnoukBV/memo/blob/main/bash_man.md#functions)
+
+[Arithmetic evaluation](https://github.com/AnoukBV/memo/blob/main/bash_man.md#arithmetic-evaluation)
+
+[Conditional expressions](https://github.com/AnoukBV/memo/blob/main/bash_man.md#conditional-expressions)
+
+[Simple command expansion](https://github.com/AnoukBV/memo/blob/main/bash_man.md#simple-command-expansion)	//PARSING DE USER INPUT
+
+[Command execution](https://github.com/AnoukBV/memo/blob/main/bash_man.md#command-execution)
+
+[Command execution environment](https://github.com/AnoukBV/memo/blob/main/bash_man.md#command-execution-environment)
+
+[Environment](https://github.com/AnoukBV/memo/blob/main/bash_man.md#environment)
+
+[Exit Status](https://github.com/AnoukBV/memo/blob/main/bash_man.md#exit-status)
+
+[Signals](https://github.com/AnoukBV/memo/blob/main/bash_man.md#signals)
+
+[Job control](https://github.com/AnoukBV/memo/blob/main/bash_man.md#job-control)
+
+[Prompt](https://github.com/AnoukBV/memo/blob/main/bash_man.md#prompt)
+
+[Readline](https://github.com/AnoukBV/memo/blob/main/bash_man.md#readline)
+
+[History](https://github.com/AnoukBV/memo/blob/main/bash_man.md#history)
+
+[History expansion](https://github.com/AnoukBV/memo/blob/main/bash_man.md#history-expansion)
+
+[Shell builtin commands](https://github.com/AnoukBV/memo/blob/main/bash_man.md#shell-builtin-commands)
+
+([Files](https://github.com/AnoukBV/memo/blob/main/bash_man.md#files))
+
+-------------------------------------------------
 ## DEFINITIONS
 
 * blank: tab ou space
 * word/token: sequence de caracteres consideree comme une unite singuliere
-* identifier/name: word/token commencant par underscor ou car alpha et avec seulement caracteres 
-* alphanumeriques
+* identifier/name: word/token commencant par underscor ou car alpha et avec seulement caracteres alphanumeriques
 * metacharacters: caractere qui separe des mots, SAUF QUAND QUOTED (|  & ; ( ) < > space tab newline)
 * control operator: token qui fait operation de controle (|| & && ; ;; ;& ;;& ( ) | |& <nl>)
 
@@ -126,7 +192,7 @@ ou encore parameter expansion
 ou ! est a quote pr empecher history expansion
 " ' \ permettent de quote, mais les comportements different
 
-- \ = esc character. preserve la valeur litterale du char qui suit SAUF <nl> (c une continuation de
+- \ = esc character. preserve la valeur litterale du char qui suit SAUF \<nl\> (c une continuation de
 ligne et plus un control operator)
 - '' = preservation de la valeur litterale de TOUS les char dans les quotes. JAMAIS de '' entre des ''
 meme avec \
@@ -206,7 +272,7 @@ a{d,c,b}e
 - sortie d'une commande remplace le nom de la commande
 - $(cmd) OU 'cmd'
 - cmd exec dans un subshell
-- \$(cat file) = \$(< file)
+- \$\(cat file) = \$\(< file)
 - si "$(cmd)"-> If the substitution appears within double quotes, word splitting and pathname 
 expansion are not performed on the results.
 
