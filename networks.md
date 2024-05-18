@@ -1,3 +1,20 @@
+# Summary
+
+Notes on Networks
+- Links
+- IPv4 and subnet masks
+- Host addresses
+- Network addresses
+- Calculating the Range of IP Addresses from Subnet Mask
+- TCP/IP Protocole
+
+Notes on NetPractice from 42 cursus
+- Exercise 6
+- Exercise 7
+- Exercise 8
+- Exercise 9
+- Exercise 10
+
 # Notes on Networks
 
 ## Links
@@ -7,6 +24,8 @@
 [*Calculating the Range of IP Addresses from Subnet Mask*](https://www.baeldung.com/cs/get-ip-range-from-subnet-mask)
 
 [*Calculating the Netmask Length (also called a prefix)*](https://networkengineering.stackexchange.com/questions/7106/how-do-you-calculate-the-prefix-network-subnet-and-host-numbers/7117#7117)
+
+[*Comprendre les principes de base des adresses et sous-réseaux TCP/IP*](https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/networking/tcpip-addressing-and-subnetting)
 
 
 ## IPv4 and subnet masks
@@ -80,12 +99,38 @@ If it's not in its binary form, we have to convert both the IP and the mask :
 
 We then convert our values back to decimals for convenience, and we have our range !
 
+## TCP/IP Protocole
+
+The success of this protocole can be explained by its ability to connect networks of varying size. One network can always be divided into sub-nets by an admin.
+
+The TCP/IP protocole uses the subnet mask to determine if a host is located on the local subnet or on a distant network.
+
+Common subnet masks: 255.255.255.192, 255.255.255.224, 255.255.255.0
+
+**Networks have classes**: A B and C are the most common. 
+- A: default mask is 255.0.0.0 (/8), first octet is between 0 and 127. 10.52.36.11.
+- B: default mask is 255.255.0.0 (/16), first octet is between 127 and 191. 172.16.52.63.
+- C: default mask is 255.255.255.0 (/24), first octet is between 191 and 223. 192.168.123.132.
+
+**Subnetworking: Practical case**. I'm an admin sys that needs to attribute IPs to 150 hosts. I'm given a class C network 192.168.123.0/24. 254 IPs are available for users on this range. But there's an issue: **my hosts are divided between three villages, corresponding to three physical networks**. Thanks to a subnet mask, I can divide my network in four subnets and thus reduce the available range of host addresses. Indeed, the subnet mask 255.255.255.192 or /26 will give me four subnets of 62 user available IPs. **The 192.168.123.0/24 network becomes 192.168.123.0/26, 192.168.123.64/26, 192.168.123.128/26 and 192.168.123.192/26.**
+
+When a host attempts at communicating with another device through the TCP/IP protocole, it triggers comparison process made of two things:
+- comparison between the subnet mask and the destination IP
+- comparison between the subnet mask and its own IP
+With this comparison, the computer can determinate whether or not the destination is a local or remote host. Indeed, once it knows which bits identify the network address, it knows if the IP is from another subnet (+ if it is on another range: another subnet I guess).
+
+**If the host is remote, the packet is sent to the default gateway, and the router transmits it to the right subnet.**
+
+
+
+
+-------------------------------
+
+# Notes on NetPractice from 42 cursus
 
 **If you are implementing a network(for example in NetPractice):**
 
 Explain multiples and choosing ranges when implementing networks and subnets etc..
-
-# Notes on NetPractice from 42 cursus
 
 ## Exercise 6
 
