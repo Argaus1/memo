@@ -1,4 +1,4 @@
-# Networks
+# Notes on Networks
 
 ## Links
 
@@ -6,12 +6,14 @@
 
 [*Calculating the Range of IP Addresses from Subnet Mask*](https://www.baeldung.com/cs/get-ip-range-from-subnet-mask)
 
+[*Calculating the Netmask Length (also called a prefix)*](https://networkengineering.stackexchange.com/questions/7106/how-do-you-calculate-the-prefix-network-subnet-and-host-numbers/7117#7117)
+
 
 ## IPv4 and subnet masks
 
 Computers communicating with each others form a **network**. A large network is composed of **subnets**.
 
-An IP address is 32bits, 4 groups of 8bits/4octets each. Binary, decimal or hexadecimal form.
+An IP address is 32bits, 4 groups of 8bits each. Binary, decimal or hexadecimal form.
 
 IP addresses can be of two kinds :
 - **Network addresses** : to locate the subnet a device is in.
@@ -56,3 +58,37 @@ A routing table entry is composed of:
 - an interface
 - a metric
 Each routing table has a default entry, used to get the data packet where it needs to go when the network is not on the table. The gateway in this case is often remote ex: Internet.
+
+## Calculating the Range of IP Addresses from Subnet Mask
+
+If we have an IPv4 + a subnet mask, we have to estimate:
+- number of possible addresses
+- starting address
+
+**Number of possible addresses**: 2^(32 - x). Sm of 0 = 2^32 possible addresses, Sm of 32 = 2^0 = 1 address. Sm of /24 = 2^32-24 - 2^8 = 256 addresses.
+
+A subnet mask in the form /24 means that the left most 24bits are ones and the 8 others bits are 0.
+Sm decimal form = 24, binary form = 11111111111111111111111100000000, decimal octets form = 255.255.255.0, binary octets form = 11111111.11111111.11111111.00000000.
+
+**Subnet starting address**
+
+You need the mask in binary or decimal form, but binary form is what we'll eventually need, and a valid IPv4, same fashion.
+
+We convert the two in binary form.
+
+
+**If you are implementing a network(for example in NetPractice):**
+
+Explain multiples and choosing ranges when implementing networks and subnets etc..
+
+# Notes on NetPractice from 42 cursus
+
+## Exercise 6
+
+## Exercise 7
+
+## Exercise 8
+
+## Exercise 9
+
+## Exercise 10
