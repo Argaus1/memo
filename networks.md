@@ -74,7 +74,11 @@ Sm decimal form = 24, binary form = 11111111111111111111111100000000, decimal oc
 
 You need the mask in binary or decimal form, but binary form is what we'll eventually need, and a valid IPv4, same fashion.
 
-We convert the two in binary form.
+If it's not in its binary form, we have to convert both the IP and the mask :
+- **Network address**: Once we have them in their right form, we can perform the bitwise AND operation, which will give us the network adress of our subnet.
+- **Broadcast address**: We simply need to set all of the host bits to 1.
+
+We then convert our values back to decimals for convenience, and we have our range !
 
 
 **If you are implementing a network(for example in NetPractice):**
@@ -92,3 +96,4 @@ Explain multiples and choosing ranges when implementing networks and subnets etc
 ## Exercise 9
 
 ## Exercise 10
+
