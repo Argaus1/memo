@@ -3,6 +3,7 @@
 ## Links
 
 [*IP address, Network address, and Host address Explained*](https://www.computernetworkingnotes.com/networking-tutorials/ip-address-network-address-and-host-address-explained.html)
+
 [*Calculating the Range of IP Addresses from Subnet Mask*](https://www.baeldung.com/cs/get-ip-range-from-subnet-mask)
 
 
