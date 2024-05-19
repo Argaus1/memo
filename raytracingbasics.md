@@ -10,7 +10,7 @@
 
 [*Ray Tracing Basics*](https://web.cse.ohio-state.edu/~shen.94/681/Site/Slides_files/basic_algo.pdf)
 
-### Mathematics notions
+### Mathematic notions
 
 [*PRODUIT SCALAIRE*](https://www.maths-et-tiques.fr/telech/ProduitScal.pdf)
 
