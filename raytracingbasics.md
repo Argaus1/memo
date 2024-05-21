@@ -150,6 +150,7 @@ So:
 We will seek for solutions to t > 1.
 
 
+Pseudo code:
 
 ```
 O = (0, 0, 0)
@@ -161,3 +162,89 @@ for x = -Cw/2 to Cw/2 {
     }
 }
 ```
+CanvasToViewport is just the change of scale function:
+```
+CanvasToViewport(x, y) {
+    return (x*Vw/Cw, y*Vh/Ch, d)
+}
+```
+TraceRay is the main thing, it computs the intersection of the ray with every object seen through the viewport, and returns the color of the sphere at the nearest intersection inside the requested range of t.
+```
+TraceRay(0, D, t_min, t_max) {
+    closest_t = inf (or big big nb)
+    closest_sphere = NULL;
+    for sphere in scene.spheres {
+        t1, t2 = IntersectRaySphere(0, D, sphere)
+        if t1 in [tmin, t_max] and t1 < closest_t {
+                closest_t = t1
+                closest_sphere = sphere
+        } 
+        if t1 in [tmin, t_max] and t1 < closest_t {
+                closest_t = t1
+                closest_sphere = sphere
+        }                                   //???? shouldn't this be hidden behind the obj?
+    }
+    if closest_sphere = NULL
+        return BACKGROUND_COLOR
+    return closest_sphere.color
+}
+```
+
+IntersectRaySphere solves the quadratic equation
+```
+IntersectRaySphere(0, D, sphere) {
+    r = sphere.radius
+    CO = O - sphere.radius
+
+    a = dot(D, D)
+    b = 2*dot(CO, D)
+    c = dot(CO, CO) - r*r
+
+    discriminant = b*b - 4*a*c
+    if discriminant < 0
+        return inf, inf
+
+    t1 = (-b + sqrt(discriminant)) / 2*a
+    t2 = (-b - sqrt(discriminant)) / 2*a
+    return t1, t2
+}
+```
+
+Let's say this is our sphere:
+
+!(GreenBlueRed spheres)[https://gabrielgambetta.com/computer-graphics-from-scratch/images/04-simple-scene.png]
+
+The structures would be filled as follow:
+```
+viewport_size = 1 x 1
+projection_plane_d = 1
+sphere {
+    center = (0, -1, 3)
+    radius = 1
+    color = (255, 0, 0)  # Red
+}
+sphere {
+    center = (2, 0, 4)
+    radius = 1
+    color = (0, 0, 255)  # Blueviewport_size = 1 x 1
+projection_plane_d = 1
+sphere {
+    center = (0, -1, 3)
+    radius = 1
+    color = (255, 0, 0)  # Red
+}
+sphere {
+    center = (2, 0, 4)
+    radius = 1
+    color = (0, 0, 255)  # Blue
+}
+sphere {
+    center = (-2, 0, 4)
+    radius = 1
+    color = (0, 255, 0)  # Green
+}
+```
+
+and the rendering would be:
+
+!(Rendering)[https://gabrielgambetta.com/computer-graphics-from-scratch/images/raytracer-01.png]
