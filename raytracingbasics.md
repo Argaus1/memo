@@ -124,7 +124,7 @@ which is a quadratic expression !
 
 The values of parameter t where the ray intersects the sphere  can be found using the quadratic formula:
 
-!(Quadform)[https://upload.wikimedia.org/wikipedia/commons/7/75/Quadratic_Formula.jpg]
+![Quadform](https://upload.wikimedia.org/wikipedia/commons/7/75/Quadratic_Formula.jpg)
 
 Depending on the value of the discriminant (b² - 4ac), we either get no solutions (the ray doesn't touch the sphere), one (the ray only touchs the sphere at point P), or two (the ray goes through the sphere).
 
@@ -212,7 +212,7 @@ IntersectRaySphere(0, D, sphere) {
 
 Let's say this is our sphere:
 
-!(GreenBlueRed spheres)[https://gabrielgambetta.com/computer-graphics-from-scratch/images/04-simple-scene.png]
+![GreenBlueRed spheres](https://gabrielgambetta.com/computer-graphics-from-scratch/images/04-simple-scene.png)
 
 The structures would be filled as follow:
 ```
@@ -247,4 +247,4 @@ sphere {
 
 and the rendering would be:
 
-!(Rendering)[https://gabrielgambetta.com/computer-graphics-from-scratch/images/raytracer-01.png]
+![Rendering](https://gabrielgambetta.com/computer-graphics-from-scratch/images/raytracer-01.png)
