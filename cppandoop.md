@@ -14,3 +14,5 @@ Accessors are useful to control how users can change and see the instance. Varia
 Classes can be compared physically and structurally. To compare them structurally we need to implement a compare function that take a pointer to an instance as an argument.
 
 Some values can be non-members, and common to all instances of a class.
+
+
