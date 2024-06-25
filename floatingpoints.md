@@ -2,9 +2,9 @@
 
 ## Summary
 
-[Floating points](
+[Floating points](https://github.com/AnoukBV/memo/blob/main/floatingpoints.md#floating-points)
 
-Fixed points
+[Fixed points](https://github.com/AnoukBV/memo/blob/main/floatingpoints.md#fixed-points)
 
 ## Floating points
 
