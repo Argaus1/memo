@@ -39,14 +39,6 @@ With a SPA, the client is not just able to make request for new web pages. On it
 
 The application is divided into **divs**, the application can then decide which divs need to be refreshed. 
 
-## What is an API / REST API
-
-Interface used to pull data from an external source. One system can communicate with another. This ensures that dynamic content is always up-to-date and relevant to the user.
-
-[REST API PLAYLIST](https://www.youtube.com/watch?v=HeXQ98sogs8&list=PLWPirh4EWFpGRdVZcQCzeTXFBNSTDAdQX)
-
-HTTP response with data : transfer of the state of the representation state of a resource. REpresentational State Transfer. 
-
 ## Basics of website architecture
 
 [Comprehensive guide](https://www.excellentwebworld.com/web-application-architecture/)
