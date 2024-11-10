@@ -1,5 +1,11 @@
 # PROXY AND NGINX
 
+[Nginx-WebServerDoc](https://docs.nginx.com/nginx/admin-guide/web-server/)
+
+[Nginx-ContentCaching](https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/)
+
+[Nginx-LoadBalancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
+
 ## Proxy and reverse proxy
 
 The client/browser doesn't communicate directly with the server, the proxy does it. 
