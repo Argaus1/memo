@@ -8,10 +8,17 @@ Cache for most visited pages.
 
 Reverse proxy : 
 
-- protects the web server. Intercepts the http requests on behalf of the web server.
+- protects the web server. Intercepts the http requests on behalf of the web server. add an authentication
 
-- load balancing ? in case of a lot of requests
+- load balancing ? in case of a lot of requests. rout requests.
 
-- RP caches static content. If a piece of content is requested again, locally cached version can be returned.
+- RP caches static content. If a piece of content is requested again, locally cached version can be returned. (not useful in our SPA case ?)
 
-- 
+
+## Nginx reverse proxy
+
+> It is possible to proxy requests to an HTTP server (another NGINX server or any other server) or a non-HTTP server (which can run an application developed with a specific framework, such as PHP or Python) using a specified protocol. Supported protocols include FastCGI, uwsgi, SCGI, and memcached.
+
+= case we're interested in. FastCGI for example is a protocol.
+
+
