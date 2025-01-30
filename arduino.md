@@ -4,6 +4,7 @@
 
 - [Playlist](https://www.youtube.com/watch?v=H5avH6EUvvA&list=PLbtzT1TYeoMj1eGqCzuVGYqUvIxQzoidL)
 - [ATmega 3280 datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
+- [ATmega 3280 Instruction Set](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf#G1447661)
 
 ## General microcontrollers
 
